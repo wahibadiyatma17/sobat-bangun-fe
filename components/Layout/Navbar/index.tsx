@@ -28,7 +28,7 @@ const Navbar: FC = () => {
           ))}
         </div>
         <div className="navbar__authentication">
-          <PrimaryButton weight="outline">Daftar</PrimaryButton>
+          <PrimaryButton weight="none">Daftar</PrimaryButton>
           <PrimaryButton>Masuk</PrimaryButton>
         </div>
       </div>

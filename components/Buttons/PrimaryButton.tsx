@@ -8,7 +8,7 @@ interface BaseButtonProps {
   type?: 'button' | 'submit' | 'reset';
   form?: string;
   fullWidth?: boolean;
-  weight?: 'solid' | 'outline';
+  weight?: 'solid' | 'outline' | 'none';
   suffix?: React.ReactNode;
   prefix?: React.ReactNode;
   size?: 'sm' | 'md' | 'lg';
@@ -62,13 +62,14 @@ const StyledButton = styled.button<Pick<ButtonProps, 'fullWidth' | 'weight' | 's
   cursor: pointer;
 
   background: ${(props) => (props.weight === 'solid' ? '#F5333F' : '#ffffff')};
-  border: none;
+  border: ${(props) => (props.weight === 'outline' ? '1px solid #F94355' : 'none')};
   border-radius: 0.375rem;
   width: ${(props) => (props.fullWidth ? '100%' : '11rem')};
   height: ${(props) => (props.size === 'lg' ? '4rem' : props.size === 'md' ? '3rem' : '2rem')};
 
   .button__text__primary {
-    color: ${(props) => (props.weight === 'solid' ? '#FFF' : '#000')};
+    color: ${(props) =>
+      props.weight === 'solid' ? '#FFF' : props.weight === 'outline' ? '#F94355' : '#000'};
     font-size: 16px;
     font-family: Source Sans Pro;
     font-style: normal;

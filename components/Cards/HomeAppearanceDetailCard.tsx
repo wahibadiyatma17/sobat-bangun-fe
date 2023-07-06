@@ -178,7 +178,7 @@ const StyledHomeAppearanceDetailCard = styled.div`
   }
 `;
 
-interface HomeRequirementDTO {
+export interface HomeRequirementDTO {
   iconUrl: string;
   label: string;
   description: string;
@@ -199,5 +199,10 @@ const HOME_REQUIREMENT_DATA = [
     iconUrl: '/icons/icon_stairs.svg',
     label: 'Lantai',
     description: '2',
+  },
+  {
+    iconUrl: '/icons/icon_bed.svg',
+    label: 'Kamar Tidur',
+    description: '4',
   },
 ] as Array<HomeRequirementDTO>;
