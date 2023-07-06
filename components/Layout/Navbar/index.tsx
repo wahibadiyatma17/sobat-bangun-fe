@@ -4,9 +4,13 @@ import { styled } from 'twin.macro';
 import { FiChevronDown } from 'react-icons/fi';
 import PrimaryButton from '@/components/Buttons/PrimaryButton';
 import { useRouter } from 'next/router';
+import { useWindowSize } from 'usehooks-ts';
 
 const Navbar: FC = () => {
   const router = useRouter();
+  const isMobile = useWindowSize().width < 1024;
+  const isMiniSize = useWindowSize().width < 468;
+
   return (
     <StyledNavbar>
       <div className="navbar__container">
@@ -19,18 +23,23 @@ const Navbar: FC = () => {
             style={{ objectFit: 'contain' }}
           />
         </div>
-        <div className="navbar__menu">
-          {NAVBAR_MENUS.map((menu: NavbarMenuDTO) => (
-            <div className="navbar__menu-card" key={menu.id}>
-              <span>{menu.label}</span>
-              {menu.hasSubMenu && <FiChevronDown className="navbar__menu-card__chevron" />}
-            </div>
-          ))}
-        </div>
-        <div className="navbar__authentication">
-          <PrimaryButton weight="none">Daftar</PrimaryButton>
-          <PrimaryButton>Masuk</PrimaryButton>
-        </div>
+        {!isMobile && (
+          <div className="navbar__menu">
+            {NAVBAR_MENUS.map((menu: NavbarMenuDTO) => (
+              <div className="navbar__menu-card" key={menu.id}>
+                <span>{menu.label}</span>
+                {menu.hasSubMenu && <FiChevronDown className="navbar__menu-card__chevron" />}
+              </div>
+            ))}
+          </div>
+        )}
+
+        {!isMiniSize && (
+          <div className="navbar__authentication">
+            <PrimaryButton weight="none">Daftar</PrimaryButton>
+            <PrimaryButton>Masuk</PrimaryButton>
+          </div>
+        )}
       </div>
     </StyledNavbar>
   );
@@ -40,8 +49,7 @@ export default Navbar;
 
 const StyledNavbar = styled.div`
   background-color: #fff;
-  position: fixed;
-  top: 0;
+
   height: max-content;
   max-height: 124px;
   padding: 40px 62px;

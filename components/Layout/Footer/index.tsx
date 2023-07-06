@@ -3,8 +3,10 @@ import Image from 'next/image';
 import { styled } from 'twin.macro';
 import { HiOutlineMail } from 'react-icons/hi';
 import { GrFacebookOption, GrInstagram, GrYoutube } from 'react-icons/gr';
+import { useWindowSize } from 'usehooks-ts';
 
 const Footer: FC = () => {
+  const isMobile = useWindowSize().width < 1024;
   return (
     <StyledFooter>
       <div className="footer__info">
@@ -68,7 +70,7 @@ const Footer: FC = () => {
         {FOOTER_PAYMENT_OPTIONS.map((paymentOptions: PaymentOptionsDTO) => (
           <div className="payment__card" key={paymentOptions.title}>
             <span className="payment-title">{paymentOptions.title}</span>
-            <div tw="flex gap-6 items-center">
+            <div tw="flex gap-6 items-center flex-wrap md:flex-nowrap">
               {paymentOptions.payment_methods.map((method) => (
                 <div key={method.slug}>{method.icon}</div>
               ))}
@@ -89,28 +91,29 @@ const StyledFooter = styled.div`
   align-items: center;
   gap: 46px;
   background: #012846;
-  max-height: 583px;
-
+  height: max-content;
   .footer__info {
     display: flex;
     align-items: flex-start;
+    flex-direction: column;
     justify-content: space-between;
-    gap: 149px;
     align-self: stretch;
+    gap: 40px;
 
     .footer__info__profile {
       display: flex;
-      width: 608px;
-      height: 291px;
+      width: 100%;
+      height: max-content;
       flex-direction: column;
       align-items: flex-start;
-      gap: 16px;
+      gap: 48px;
     }
 
     .footer__info__navigation {
       display: flex;
       align-items: flex-start;
-      gap: 48px;
+      flex-direction: column;
+      gap: 24px;
       flex: 1 0 0;
 
       .navigation__menu__container {
@@ -150,7 +153,7 @@ const StyledFooter = styled.div`
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 8px;
+      gap: 32px;
       flex: 1 0 0;
       align-self: stretch;
 
@@ -217,6 +220,8 @@ const StyledFooter = styled.div`
     min-height: 81px;
     align-items: flex-start;
     align-self: stretch;
+    flex-direction: column;
+    gap: 1.5rem;
 
     .payment__card {
       display: flex;
@@ -232,6 +237,33 @@ const StyledFooter = styled.div`
         font-weight: 600;
         line-height: 120%;
       }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    max-height: 583px;
+    .footer__info {
+      display: flex;
+      flex-direction: row;
+      gap: 149px;
+      .footer__info__profile {
+        width: 608px;
+        gap: 16px;
+        height: 291px;
+      }
+      .info__description {
+        gap: 8px;
+      }
+
+      .footer__info__navigation {
+        flex-direction: row;
+        gap: 8px;
+      }
+    }
+
+    .footer__payment {
+      flex-direction: row;
+      gap: 0;
     }
   }
 `;

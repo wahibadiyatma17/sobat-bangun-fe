@@ -7,7 +7,7 @@ import TestimoniCard from './TestimoniCard';
 
 const HomeAppearanceDetailCard: FC = () => {
   return (
-    <div tw="flex flex-col gap-8">
+    <div tw="flex flex-col gap-8  w-screen lg:w-[unset]">
       <StyledHomeAppearanceDetailCard>
         <div className="home-appearance-detail-card__container">
           <div className="card-title">
@@ -175,6 +175,9 @@ const StyledHomeAppearanceDetailCard = styled.div`
         line-height: 150%;
       }
     }
+  }
+
+  @media (min-width: 1024px) {
   }
 `;
 

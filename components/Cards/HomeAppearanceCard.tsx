@@ -33,8 +33,8 @@ const StyledHomeAppearanceCard = styled.div`
   gap: 24px;
   flex: 1 0 0;
 
-  max-width: 262px;
-  min-width: 256px;
+  max-width: 100%;
+  min-width: 100%;
   height: 310px;
 
   border-radius: 8px;
@@ -63,5 +63,10 @@ const StyledHomeAppearanceCard = styled.div`
       font-weight: 400;
       line-height: 150%;
     }
+  }
+
+  @media (min-width: 1024px) {
+    max-width: 262px;
+    min-width: 256px;
   }
 `;

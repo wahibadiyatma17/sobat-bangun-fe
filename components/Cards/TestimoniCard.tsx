@@ -35,6 +35,7 @@ export default TestimoniCard;
 const StyledTestimoniCard = styled.div`
   display: inline-flex;
   flex-direction: column;
+  width: 100%;
   align-items: flex-start;
   gap: 16px;
 

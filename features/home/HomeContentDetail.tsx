@@ -25,8 +25,10 @@ export default HomeContentDetail;
 
 const StyledHomeContentDetail = styled.div`
   display: flex;
-  gap: 36px;
+  gap: 24px;
   max-width: 1312px;
+  flex-direction: column;
+
   width: 100%;
   margin: 0 auto;
 
@@ -50,6 +52,11 @@ const StyledHomeContentDetail = styled.div`
     flex-direction: column;
     gap: 32px;
     width: 364px;
+  }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 36px;
   }
 `;
 
