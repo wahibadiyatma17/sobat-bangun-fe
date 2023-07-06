@@ -3,7 +3,7 @@ import 'twin.macro';
 
 import { useWindowSize } from 'usehooks-ts';
 import Navbar from './Navbar';
-// import Footer from './Footer';
+import Footer from './Footer';
 
 interface BaseLayoutProps {
   children?: React.ReactNode;
@@ -16,10 +16,10 @@ const Layout: FC<LayoutProps> = (props) => {
   const isMobile = useWindowSize().width < 768;
 
   return (
-    <div tw="relative min-h-[100vh]  bg-[#191919]">
+    <div tw="relative min-h-[100vh]">
       <Navbar />
       {children}
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };
