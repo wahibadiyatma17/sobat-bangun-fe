@@ -3,69 +3,73 @@ import React, { FC } from 'react';
 import { styled } from 'twin.macro';
 import { BsFillCheckCircleFill } from 'react-icons/bs';
 import PrimaryButton from '../Buttons/PrimaryButton';
+import TestimoniCard from './TestimoniCard';
 
 const HomeAppearanceDetailCard: FC = () => {
   return (
-    <StyledHomeAppearanceDetailCard>
-      <div className="home-appearance-detail-card__container">
-        <div className="card-title">
-          <h5>Omah Apik 3</h5>
-          <div tw="flex items-center gap-1">
-            <div tw="relative w-[28px] h-[28px]">
-              <Image
-                src={'/icons/icon_studio-logo.png'}
-                alt="logo studio"
-                fill
-                style={{ objectFit: 'cover' }}
-              />
-            </div>
-            <span>Studio SAe</span>
-          </div>
-        </div>
-
-        <div className="card-info">
-          <div tw="flex gap-6">
-            <span tw="text-[#4D4D4D] w-[80px]">Jenis Rumah</span>
-            <span tw="text-[#000]">Scandinavian</span>
-          </div>
-          <div tw="flex gap-6">
-            <span tw="text-[#4D4D4D] w-[80px]">Tipe Desain</span>
-            <div tw="flex gap-2 items-center">
-              <BsFillCheckCircleFill size={16} color="#F5333F" />
-              <span tw="text-[#F5333F]">Dapat Dimodifikasi</span>
+    <div tw="flex flex-col gap-8">
+      <StyledHomeAppearanceDetailCard>
+        <div className="home-appearance-detail-card__container">
+          <div className="card-title">
+            <h5>Omah Apik 3</h5>
+            <div tw="flex items-center gap-1">
+              <div tw="relative w-[28px] h-[28px]">
+                <Image
+                  src={'/icons/icon_studio-logo.png'}
+                  alt="logo studio"
+                  fill
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <span>Studio SAe</span>
             </div>
           </div>
-        </div>
 
-        <div className="card-separator" />
-
-        <div className="card-requirement">
-          {HOME_REQUIREMENT_DATA.map((req: HomeRequirementDTO, idx: number) => (
-            <div key={idx} tw="flex flex-col items-center">
-              <Image src={req.iconUrl} alt={req.label} width={24} height={24} />
-              <span tw="text-[#808080] text-[12px]">{req.label}</span>
-              <span tw="text-[#000] text-[14px]">{req.description}</span>
+          <div className="card-info">
+            <div tw="flex gap-6">
+              <span tw="text-[#4D4D4D] w-[80px]">Jenis Rumah</span>
+              <span tw="text-[#000]">Scandinavian</span>
             </div>
-          ))}
-        </div>
+            <div tw="flex gap-6">
+              <span tw="text-[#4D4D4D] w-[80px]">Tipe Desain</span>
+              <div tw="flex gap-2 items-center">
+                <BsFillCheckCircleFill size={16} color="#F5333F" />
+                <span tw="text-[#F5333F]">Dapat Dimodifikasi</span>
+              </div>
+            </div>
+          </div>
 
-        <div className="card-separator" />
+          <div className="card-separator" />
 
-        <div className="card-price">
-          <span className="label">Harga Desain</span>
-          <div tw="flex flex-col">
-            <span className="price">Rp. 32.500.000</span>
-            <span className="description">Harga konstruksi mulai dari Rp 560.000.000</span>
+          <div className="card-requirement">
+            {HOME_REQUIREMENT_DATA.map((req: HomeRequirementDTO, idx: number) => (
+              <div key={idx} tw="flex flex-col items-center">
+                <Image src={req.iconUrl} alt={req.label} width={24} height={24} />
+                <span tw="text-[#808080] text-[12px]">{req.label}</span>
+                <span tw="text-[#000] text-[14px]">{req.description}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="card-separator" />
+
+          <div className="card-price">
+            <span className="label">Harga Desain</span>
+            <div tw="flex flex-col">
+              <span className="price">Rp. 32.500.000</span>
+              <span className="description">Harga konstruksi mulai dari Rp 560.000.000</span>
+            </div>
+          </div>
+
+          <div tw="w-full ">
+            <PrimaryButton fullWidth size="md">
+              Konsultasi Sekarang
+            </PrimaryButton>
           </div>
         </div>
-
-        <div tw="w-full ">
-          <PrimaryButton fullWidth size="md">
-            Konsultasi Sekarang
-          </PrimaryButton>
-        </div>
-      </div>
-    </StyledHomeAppearanceDetailCard>
+      </StyledHomeAppearanceDetailCard>
+      <TestimoniCard />
+    </div>
   );
 };
 
@@ -195,10 +199,5 @@ const HOME_REQUIREMENT_DATA = [
     iconUrl: '/icons/icon_stairs.svg',
     label: 'Lantai',
     description: '2',
-  },
-  {
-    iconUrl: '/icons/icon_bed.svg',
-    label: 'Kamar Tidur',
-    description: '4',
   },
 ] as Array<HomeRequirementDTO>;
